@@ -1,0 +1,232 @@
+{% set dataset_type = h.default_package_type() %}
+
+{% block header_wrapper %} {% block header_account %}
+<div class="account-masthead">
+  <div class="container">
+    {% block header_account_container_content %} {% if c.userobj %}
+    <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+      <ul class="list-unstyled">
+        {% block header_account_logged %} {% if c.userobj.sysadmin %}
+        <li>
+          <a href="{{ h.url_for('admin.index') }}" title="{{ _('Sysadmin settings') }}">
+            <i class="fa fa-gavel" aria-hidden="true"></i>
+            <span class="text">{{ _('Admin') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="/organization/" title="Organizations">
+            <i class="fa fa-sitemap"></i>
+            <span class="text">Organizations</span>
+          </a>
+        </li>
+        <li>
+          <a href="/group/" title="Groups">
+            <i class="fa fa-users"></i>
+            <span class="text">Groups</span>
+          </a>
+        </li>
+        {% endif %}
+        {% block header_account_profile %}
+        <li>
+          <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
+            {{ h.user_image((c.user if c and c.user else ''), size=22) }}
+            <span class="username">{{ c.userobj.display_name }}</span>
+          </a>
+        </li>
+        {% endblock %}
+        {% block header_dashboard %}
+        <li>
+          <a href="{{ h.url_for('dashboard.datasets') }}" title="{{ _(" View dashboard") }}">
+            <i class="fa fa-tachometer" aria-hidden="true"></i>
+            <span class="text">{{ _('Dashboard') }}</span>
+          </a>
+        </li>
+        {% endblock %}
+        {% block header_account_settings_link %}
+        <li>
+          <a href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <span class="text">{{ _('Profile settings') }}</span>
+          </a>
+        </li>
+        {% endblock %} {% block header_account_log_out_link %}
+        <li>
+          <a href="{{ h.url_for('user.logout') }}" title="{{ _('Log out') }}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span class="text">{{ _('Log out') }}</span>
+          </a>
+        </li>
+        {% endblock %} {% endblock %}
+      </ul>
+    </div>
+    {% else %}
+    <nav class="account not-authed" aria-label="{{ _('Account') }}">
+      <ul class="list-unstyled">
+        {% block header_account_notlogged %}
+        <li>{% link_for _('Log in'), named_route='user.login' %}</li>
+        {% if h.check_access('user_create') %}
+        <li>{% link_for _('Register'), named_route='user.register', class_='sub' %}</li>
+        {% endif %} {% endblock %}
+      </ul>
+    </nav>
+    {% endif %} {% endblock %}
+  </div>
+
+
+</div>
+
+
+{% endblock %}
+<header class="masthead">
+    {% block header_debug %} {% if g.debug and not g.debug_supress_header %}
+    <div class="debug">Blueprint : {{ g.blueprint }}<br />View : {{ g.view }}</div>
+    {% endif %} {% endblock %}
+
+
+    {# Had to copy this from DKAN/Drupal and remove the CKAN style which is gross but no time #}
+    <div class="branding container">
+      <a class="logo navbar-btn pull-left" href="/" title="Home">
+        <img src="/static/logo.png" alt="Home">
+      </a>
+      <!-- views exposed search -->
+      <div class="search-box pull-right">
+        <section id="block-dkan-sitewide-dkan-sitewide-search-bar"
+                 class="block block-dkan-sitewide block-- clearfix compact-form-wrapper">
+          <div class="content">
+            <form action="/dataset/" method="get" id="dkan-sitewide-dataset-search-form" accept-charset="UTF-8">
+              <div>
+                  <div class="form-item form-type-textfield form-item-search form-group">
+                      <label for="edit-search">Search </label>
+                      <!-- Update the name attribute to "q" -->
+                      <input placeholder="search" class="form-control form-text compact-form-input" type="text"
+                             id="edit-search" name="q" value="" size="30" maxlength="128">
+                  </div>
+                  {# <input type="submit" id="edit-submit--9" name="op" value=""
+                         class="form-submit btn btn-default btn-primary compact-form-input"> #}
+                  <input type="submit" id="edit-submit--9" value=""
+                         class="form-submit btn btn-default btn-primary compact-form-input">
+              </div>
+          </form>
+          </div>
+        </section>
+        <!-- user menu -->
+        {% if not c.userobj %}
+          <section id="block-dkan-sitewide-dkan-sitewide-user-menu--2"
+                   class="block block-dkan-sitewide block-- clearfix">
+            <div class="content">
+              <span class="links"><a href="/user/login">Log in</a><a href="/user/register"
+                                                                     class="sub">Register</a></span>
+            </div>
+          </section>
+        {% else %}
+          <section id="block-dkan-sitewide-dkan-sitewide-user-menu--2"
+                   class="block block-dkan-sitewide block-- clearfix">
+            <div class="content">
+              <span class="links logged-in"><a href="/user/{{ c.userobj.name }}">{{ c.userobj.name }}</a><a href="/user/_logout" class="sub">Log out</a></span>
+            </div>
+          </section>
+        {% endif %}
+        <!-- user menu -->
+      </div>
+    </div>
+    
+
+     <!--nav menu-->
+     <nav class="navbar navbar-expand-lg navigation-wrapper">
+      <div class="container-fluid justify-content-end" id="container-navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dataset/">Browse Data</a>
+            </li>
+            <li class="nav-item dropdown show">
+              <a class="nav-link" href="/developers" role="button" aria-expanded="false">Developers <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/get-started">Get Started</a></li>
+                <li><a class="dropdown-item" href="/documentation">Documentation</a></li>
+                <li><a class="dropdown-item" href="/developer-information">Developer Information</a></li>
+                <li><a class="dropdown-item" href="/status" title="">Status</a></li>
+                <li><a class="dropdown-item" href="/resources">Resources</a></li>
+                <li><a class="dropdown-item" href="/data-updates">Data Updates</a></li>
+                <li><a class="dropdown-item" href="/faqs" title="">FAQs</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown show">
+              <a class="nav-link" href="/innovation" role="button" aria-expanded="false">Innovation <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/innovation-challenges">Innovation Challenges</a></li>
+                <li><a class="dropdown-item" href="/transport-nsw-endorsed-apps">Transport for NSW Endorsed Apps</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://opendataforum.transport.nsw.gov.au">Forum</a>
+            </li>
+            <li class="nav-item dropdown show">
+              <a class="nav-link" href="/gtfs-studio/#" role="button" aria-expanded="false">GTFS Studio <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="https://opendata.transport.nsw.gov.au/sites/default/files/GTFS%20Studio%20User%20Guide_v1.0.pdf">GTFS Studio User Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--nav menu-->
+
+
+      {# <div class="navigation-wrapper navbarmenu">
+        <nav id="navbar-main" class="navbar navbar-light navbar-main">
+      
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
+            aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars text-white"></span>
+          </button>
+        <div class="container">
+          <ul id="main-menu" class="nav justify-content-end">
+            <li class="nav-item"><a href="/dataset/" title="">Browse Data</a></li>
+            <li class="nav-item dropdown">
+              <a href="/developers" class="nav-item" aria-expanded="false">Developers <span class="fa fa-caret-down"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/get-started">Get Started</a>
+                <a class="dropdown-item" href="/documentation">Documentation</a>
+                <a class="dropdown-item" href="/developer-information">Developer Information</a>
+                <a class="dropdown-item" href="/status" title="">Status</a>
+                <a class="dropdown-item" href="/resources">Resources</a>
+                <a class="dropdown-item" href="/data-updates">Data Updates</a>
+                <a class="dropdown-item" href="/faqs" title="">FAQs</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="/innovation" class="nav-link" aria-expanded="false">Innovation <span class="fa fa-caret-down"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/innovation-challenges">Innovation Challenges</a>
+                <a class="dropdown-item" href="/transport-nsw-endorsed-apps">Transport for NSW Endorsed Apps</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="https://opendataforum.transport.nsw.gov.au/" title="" target="_blank">Forum</a></li>
+            <li class="nav-item dropdown">
+              <a href="/gtfs-studio/#" title="" class="nav-link" aria-expanded="false">GTFS Studio <span class="fa fa-caret-down"></span></a>
+              <div class="dropdown-menu">
+                <a class ="dropdown-item"
+                    href="https://opendata.transport.nsw.gov.au/sites/default/files/GTFS%20Studio%20User%20Guide_v1.0.pdf"
+                    title="">GTFS Studio User Guide</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="/blog" title="">Blog</a></li>
+          </ul>
+        </div>
+      
+    </nav>
+    </div> #}
+</header>
+<div class="colour-stripe">
+  <img src="/static/colour-stripe.png"
+    alt="Colour Stripe"></img>
+</div>
+{% endblock %}

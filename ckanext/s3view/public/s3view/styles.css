@@ -1,0 +1,60 @@
+#wrapper {
+	padding-left: 0;
+}
+
+#page-wrapper {
+	width: 100%;
+	padding: 5px 15px;
+}
+
+#tb-s3objects {
+	width: 100% !Important;
+}
+
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+
+body {
+	font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+	color: #6D6E71;
+}
+
+
+.title {
+	padding: 6px 12px;
+}
+
+.breadcrumb {
+	margin-bottom: 0;
+}
+
+#navbuttons .btn {
+	padding: 3px 6px;
+}
+
+.glyphicon-refresh-animate {
+	-animation: spin .7s infinite linear;
+	-webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: scale(1) rotate(0deg);
+	}
+
+	to {
+		transform: scale(1) rotate(360deg);
+	}
+}

@@ -1,0 +1,37 @@
+{% ckan_extends %}
+{% import "macros/form.html" as form %}
+
+{% block extra_fields %}
+{{ super() }}
+{% if h.activity_show_email_notifications() %}
+  {% call form.checkbox('activity_streams_email_notifications', label=_('Subscribe to notification emails'), id='field-activity-streams-email-notifications', value=True, checked=g.userobj.activity_streams_email_notifications) %}
+  {% set helper_text = _("You will receive notification emails from {site_title}, e.g. when you have new activities on your dashboard."|string) %}
+  {{ form.info(helper_text.format(site_title=g.site_title)) }}
+{% endcall %}
+{% endif %}
+
+{% block optional_core_fields %}
+{% endblock %}
+
+{% block terms_and_conditions %}
+<fieldset class="form-wrapper panel panel-default" id="edit-legal">
+  <legend class="panel-heading">
+    <div class="panel-title fieldset-legend">Terms and Conditions of Use</div>
+  </legend>
+  {% snippet 'user/snippets/terms_and_conditions.html' %}
+  {{ form.checkbox('accept_terms_conditions', label=_('Accept Terms and Conditions of Use'), id='field-accept-terms-conditions', is_required=True) }}
+  </div>
+</fieldset>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const termsCheckbox = document.getElementById('field-accept-terms-conditions');
+  const submitButton = document.querySelector('#user-register-form button[type="submit"]');
+
+  submitButton.disabled = true
+  termsCheckbox.addEventListener('change', function() {
+      submitButton.disabled = !termsCheckbox.checked;
+  });
+  })
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<!--
+Copyright 2014-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License").
+
+You may not use this file except in compliance with the License. A copy
+of the License is located at
+
+https://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://aws.amazon.com/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+        integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
+        integrity="sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/s3view/styles.css">
+</head>
+
+<!-- DEBUG: Enable this for red outline on all elements -->
+<!-- <style media="screen" type="text/css"> * { outline: 1px red solid; } </style> -->
+
+<body>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+
+                    <!-- Panel including title, breadcrumbs, and controls -->
+                    <div class="panel-heading clearfix">
+                        <!-- Title and breadcrumbs -->
+                        <div class="btn-group pull-left">
+                            <!-- Bucket breadcrumbs -->
+                            <div class="pull-right">
+                                <ul id="breadcrumb" class="breadcrumb pull-right">
+                                    <li class="active">
+                                        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <div id="navbuttons" class="pull-right">
+                            <div>
+                                <!-- Hide folders checkbox -->
+                                <div class="btn-group">
+                                    <label class="btn">
+                                        <input type="checkbox" id="hidefolders">&nbsp;Hide Folders?
+                                    </label>
+                                </div>
+                                <!-- Folder/Bucket radio group -->
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary active" title="View all objects in folder">
+                                        <i class="fa fa-angle-double-up"></i>
+                                        <input type="radio" name="optionsdepth" value="folder" id="optionfolder"
+                                            checked>&nbsp;Folder
+                                    </label>
+                                    <label class="btn btn-primary" title="View all objects in bucket">
+                                        <i class="fa fa-angle-double-down"></i>
+                                        <input type="radio" name="optionsdepth" value="bucket"
+                                            id="optionbucket">&nbsp;Bucket
+                                    </label>
+                                </div>
+                                <!-- Dual purpose: progress spinner and refresh button, plus object count -->
+                                <div class="btn-group" id="refresh">
+                                    <span id="bucket-loader" style="cursor: pointer;"
+                                        class="btn fa fa-refresh fa-2x pull-left" title="Refresh"></span>
+                                    <span id="badgecount" class="badge pull-right" title="Object count">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Panel including S3 object table -->
+                    <div class="panel-body">
+                        <table class="table table-bordered table-hover table-striped" id="tb-s3objects">
+                            <thead>
+                                <tr>
+                                    <th>Object</th>
+                                    <th>Folder</th>
+                                    <th>Last Modified</th>
+                                    <th>Timestamp</th>
+                                    <th>Size</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-s3objects">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"
+    integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.207.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="/s3view/scripts.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        s3View({
+            Region: "{{s3view_region}}",
+            Bucket: "{{s3view_bucket}}",
+            Prefix: "{{s3view_prefix}}",
+            Delimiter: "/"
+        })
+    })
+</script>

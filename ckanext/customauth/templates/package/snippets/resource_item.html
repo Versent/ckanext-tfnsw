@@ -1,0 +1,20 @@
+{% ckan_extends %}
+
+{% set login_url = h.url_for('user.login') %}
+{% set url = login_url if g.user == '' else url %}
+
+{% block resource_item_title %}
+  {{super()}}
+{% endblock %}
+
+{% block resource_item_explore %}
+{% if g.user == "" %}
+<div class="btn-group">
+  <a href="{{ login_url }}">Login to download</a>
+<dev>
+{% else %}
+  {{ super() }}
+{% endif %}
+
+{% endblock %}
+
