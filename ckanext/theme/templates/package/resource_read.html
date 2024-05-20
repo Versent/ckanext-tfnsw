@@ -32,7 +32,7 @@
                     <li>{% link_for _('Manage'), named_route=pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='wrench' %}</li>
                   {% endif %}
                 {% endblock action_manage %}
-            {% if res.url and h.is_url(res.url) %}
+            {% if res.url and h.is_url(res.url) and  not res.format in ('tableau') %}
               <li>
                 <div class="btn-group">
                 <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
@@ -48,27 +48,27 @@
                 </a>
                 {% block download_resource_button %}
                   {% if res.datastore_active %}
-                <button class="btn btn-primary dropdown-toggle" role="button" id="dropdownDownloadFormat" data-bs-toggle="dropdown" aria-expanded="false" aria-label="list of downloadable formats">
-                    <span class="caret"></span>
-                  </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownDownloadFormat">
-                  <li>
-                    <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, bom=True) }}"
-                      target="_blank" rel="noreferrer"><span>CSV</span></a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='tsv', bom=True) }}"
-                      target="_blank" rel="noreferrer"><span>TSV</span></a>
-                  </li>
-                  <li>
-                      <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='json') }}"
-                      target="_blank" rel="noreferrer"><span>JSON</span></a>
-                  </li>
-                  <li>
-                      <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='xml') }}"
-                      target="_blank" rel="noreferrer"><span>XML</span></a>
-                  </li>
-                </ul>
+                    <button class="btn btn-primary dropdown-toggle" role="button" id="dropdownDownloadFormat" data-bs-toggle="dropdown" aria-expanded="false" aria-label="list of downloadable formats">
+                        <span class="caret"></span>
+                      </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownDownloadFormat">
+                      <li>
+                        <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, bom=True) }}"
+                          target="_blank" rel="noreferrer"><span>CSV</span></a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='tsv', bom=True) }}"
+                          target="_blank" rel="noreferrer"><span>TSV</span></a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='json') }}"
+                          target="_blank" rel="noreferrer"><span>JSON</span></a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="{{ h.url_for('datastore.dump', resource_id=res.id, format='xml') }}"
+                          target="_blank" rel="noreferrer"><span>XML</span></a>
+                      </li>
+                    </ul>
                   {% endif %}
                 {% endblock %}
                 </div>
@@ -80,13 +80,17 @@
         </div>
         {% block resource_content %}
           {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>{% endblock %}
-          {% block resource_read_url %}
-            {% if res.url and h.is_url(res.url) %}
-              <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
-            {% elif res.url %}
-              <p class="text-muted break-word">{{ _('URL:') }} {{ res.url }}</p>
-            {% endif %}
-          {% endblock %}
+          {% if not res.format in ('tableau') %}
+            {% block resource_read_url %}
+              {% if res.url and h.is_url(res.url) %}
+                <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
+              {% elif res.url %}
+                <p class="text-muted break-word">{{ _('URL:') }} {{ res.url }}</p>
+              {% endif %}
+            {% endblock %}
+          {% else %}
+              <p> URL </p>
+          {% endif %}
           <div class="prose notes" property="rdfs:label">
             {% if res.description %}
               {{ h.render_markdown(res.description) }}

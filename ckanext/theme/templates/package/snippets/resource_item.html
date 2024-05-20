@@ -68,8 +68,10 @@
         <li>
           <a class="dropdown-item resource-url-analytics" href="{{ res.url }}" target="_blank" rel="noreferrer">
             {% if res.has_views or res.url_type == 'upload' %}
-              <i class="fa fa-arrow-circle-down"></i>
-              {{ _('Download') }}
+              {% if not res.format in ('tableau') %}
+                <i class="fa fa-arrow-circle-down"></i>
+                {{ _('Download') }}
+              {% endif %}
             {% else %}
               <i class="fa fa-external-link"></i>
               {{ _('Go to resource') }}
