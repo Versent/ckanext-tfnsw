@@ -1,0 +1,12 @@
+{% ckan_extends %}
+{% set res = resource %}
+{% block resource_content %}
+<h1>{{ res.format }}</h1>
+    {% if res.format.lower() == 'iframe' %}
+      {% set token = h.get_arcgis_token() %}
+      {% set iframe_url = res.url + '&token=' + token %}
+      <iframe src="{{ iframe_url }}" width="100%" height="600px"></iframe>
+    {% else %}
+      {{ super() }}
+    {% endif %}
+{% endblock %}
