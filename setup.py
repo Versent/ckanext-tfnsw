@@ -38,5 +38,6 @@ setup(
     tfnsw_metrics=ckanext.metrics.plugin:MetricsPlugin
     tfnsw_odiebot=ckanext.odiebot.plugin:OdieBotPlugin
     tfnsw_userreg=ckanext.userreg.plugin:UserRegPlugin
+    tfnsw_iframe=ckanext.iframe.plugin:IframePlugin
     '''
 )
