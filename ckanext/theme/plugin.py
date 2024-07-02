@@ -14,3 +14,7 @@ class ThemePlugin(plugins.SingletonPlugin):
         toolkit.add_template_directory(config_, "templates")
         toolkit.add_public_directory(config_, "public")
         toolkit.add_resource("assets", "theme")
+
+    def get_helpers(self):
+        from ckanext.theme.helpers import register_helpers
+        return register_helpers()
