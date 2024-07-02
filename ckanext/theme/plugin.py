@@ -6,6 +6,7 @@ from .cli import get_commands
 class ThemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer, inherit=True)
     plugins.implements(plugins.IClick)
+    plugins.implements(plugins.ITemplateHelpers)
 
     def get_commands(self):
         return get_commands()
