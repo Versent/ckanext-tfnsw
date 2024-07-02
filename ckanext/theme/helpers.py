@@ -15,7 +15,14 @@ def get_arcgis_token_helper():
     password = tk.config.get('ckan.arcgis.password')
     referer = tk.config.get('ckan.arcgis.referer')
     arc_gis_url = tk.config.get('ckan.arcgis.url')
+    log.info(f"Username: {username}")
+    log.info(f"Password: {password}")
+    log.info(f"Referer: {referer}")
+    log.info(f"ArcGIS URL: {arc_gis_url}")
 
+    if not all([username, password, referer, arc_gis_url]):
+        log.error("One or more configuration values are missing")
+        raise ValueError("One or more configuration values are missing")
     current_time = time.time()
     if arcgis_token_cache['token'] and current_time < arcgis_token_cache['expires']:
         log.info('Using cached token')
