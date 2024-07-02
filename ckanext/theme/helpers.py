@@ -24,6 +24,7 @@ def get_arcgis_token_helper():
         log.error("One or more configuration values are missing")
         raise ValueError("One or more configuration values are missing")
     current_time = time.time()
+    current_time = int(current_time)*1000
     if arcgis_token_cache['token'] and current_time < arcgis_token_cache['expires']:
         log.info('Using cached token')
         return arcgis_token_cache['token']
