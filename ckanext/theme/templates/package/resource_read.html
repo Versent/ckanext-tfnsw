@@ -101,10 +101,10 @@
 <!--              <p>{% trans dataset=h.get_translated(package, 'title'), url=h.url_for(package.type ~ '.read', id=package.name) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}-->
 <!--            {% endif %}-->
           </div>
-          {% if res.format.lower() == 'iframe' %}
-          {% set token = h.get_arcgis_token() %}
-          {% set iframe_url = res.url + '&token=' + token %}
-          <iframe src="{{ iframe_url }}" width="100%" height="600px"></iframe>
+          {% if res.format.lower() == 'arcgis' %}
+            {% set token = h.get_arcgis_token() %}
+            {% set iframe_url = res.url + '&token=' + token %}
+            <iframe src="{{ iframe_url }}" width="100%" height="800"></iframe>
           {% endif %}
         {% endblock %}
       {% block data_preview %}
