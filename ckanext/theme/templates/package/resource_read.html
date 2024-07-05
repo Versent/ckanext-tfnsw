@@ -101,11 +101,9 @@
 <!--              <p>{% trans dataset=h.get_translated(package, 'title'), url=h.url_for(package.type ~ '.read', id=package.name) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}-->
 <!--            {% endif %}-->
           </div>
-          {% if res.format.lower() == 'arcgis' %}
-            {% set token = h.get_arcgis_token() %}
-            {% set iframe_url = res.url + '&token=' + token %}
-            <iframe src="{{ iframe_url }}" width="100%" height="800"></iframe>
-          {% endif %}
+          <!-- Including an html block that can handle the iframe rendering thats behind authentication, eg: loading ArcGIS iframe with token -->
+          {% include "package/snippets/resource_auth_iframe.html" %}
+          <!-- End  -->
         {% endblock %}
       {% block data_preview %}
       {% block resource_view %}
