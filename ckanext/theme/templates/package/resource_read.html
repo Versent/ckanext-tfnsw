@@ -80,17 +80,16 @@
         </div>
         {% block resource_content %}
           {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>{% endblock %}
-          {% if not res.format in ('tableau') %}
-            {% block resource_read_url %}
-              {% if res.url and h.is_url(res.url) %}
+              {% block resource_read_url %}
+              {% if (res.format.endswith('-public')) or (res.format.lower() in ('tableau','arcgis')) %}
+                <p></p>
+              {% elif res.url and h.is_url(res.url) %}
                 <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
               {% elif res.url %}
                 <p class="text-muted break-word">{{ _('URL:') }} {{ res.url }}</p>
               {% endif %}
             {% endblock %}
-          {% else %}
-              <p> URL </p>
-          {% endif %}
+
           <div class="prose notes" property="rdfs:label">
             {% if res.description %}
               {{ h.render_markdown(res.description) }}
@@ -101,7 +100,7 @@
 <!--              <p>{% trans dataset=h.get_translated(package, 'title'), url=h.url_for(package.type ~ '.read', id=package.name) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}-->
 <!--            {% endif %}-->
           </div>
-          <!-- Including an html block that can handle the iframe rendering thats behind authentication, eg: loading ArcGIS iframe with token -->
+          <!-- Including an html block that can handle the iframe rendering thats behind an authentication page, eg: loading ArcGIS iframe with token -->
           {% include "package/snippets/resource_auth_iframe.html" %}
           <!-- End  -->
         {% endblock %}
