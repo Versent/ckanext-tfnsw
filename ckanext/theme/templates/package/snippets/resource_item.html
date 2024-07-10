@@ -17,7 +17,10 @@
 
 
 {% set login_url = h.url_for('user.login') %}
-{% set url = login_url if g.user == '' else url %}
+<!-- bypassing login screen by setting url to login screen if the user is unauthenticated and resource format doesnot end with -public -->
+{% set url = login_url if g.user == '' and not res.format.endswith('-public') else url %}
+
+
 
 <li class="resource-item" data-id="{{ res.id }}">
   {% block resource_item_title %}
@@ -35,10 +38,11 @@
   {% endblock %}
   {% block resource_item_explore %}
 
-  {% if g.user == "" %}
+  <!-- Bypassing the login to download link for unauthenticated users, if the resource type ends with -public-->
+  {% if (g.user == "") and (not res.format.endswith('-public') ) %}
     <div class="btn-group">
       <a href="{{ login_url }}">Login to download</a>
-    <dev>
+    </div>
   {% else %}
 
     {% if not url_is_edit %}
@@ -53,7 +57,8 @@
           {% block explore_view %}
             <li>
               <a class="dropdown-item" href="{{ url }}">
-                {% if res.has_views %}
+                <!-- moving dropdown checks here , so show the preview dropdown, if there is a view || format is tableau || format ends in -public -->
+                {% if res.has_views or res.format in ('tableau')  or res.format.endswith('-public') %}
                   <i class="fa fa-chart-bar"></i>
                   {{ _('Preview') }}
                 {% else %}
