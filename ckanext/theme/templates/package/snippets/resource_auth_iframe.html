@@ -1,7 +1,7 @@
 {# resource_auth_iframe.html #}
 <!-- Moving the template for pre authenticating iframe urls , for example  we are getting the token 
     for ArcGIS online server and using that to render the iframe below -->
-{% if res.format.lower() == 'arcgis' %}
+{% if res.format.lower() == 'arcgis-private' %}
     {% set token = h.get_arcgis_token() %}
     {% set iframe_url = res.url + '&token=' + token %}
     <iframe src="{{ iframe_url }}" width="100%" height="800"></iframe>
