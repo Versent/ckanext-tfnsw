@@ -58,7 +58,7 @@
             <li>
               <a class="dropdown-item" href="{{ url }}">
                 <!-- moving dropdown checks here , so show the preview dropdown, if there is a view || format ends in -private || format ends in -public -->
-                % if res.has_views or res.format.lower().endswith('-private') or res.format.lower().endswith('-public') %}
+                {% if res.has_views or res.format.lower().endswith('-private') or res.format.lower().endswith('-public') %}
                   <i class="fa fa-chart-bar"></i>
                   {{ _('Preview') }}
                 {% else %}
