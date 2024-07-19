@@ -32,7 +32,7 @@
                     <li>{% link_for _('Manage'), named_route=pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='wrench' %}</li>
                   {% endif %}
                 {% endblock action_manage %}
-            {% if res.url and h.is_url(res.url) and  not res.format in ('tableau') %}
+            {% if res.url and h.is_url(res.url) %}
               <li>
                 <div class="btn-group">
                 <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
@@ -81,9 +81,7 @@
         {% block resource_content %}
           {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>{% endblock %}
               {% block resource_read_url %}
-              {% if (res.format.lower().endswith('-private'))  %}
-                <p></p>
-              {% elif res.url and h.is_url(res.url) %}
+              {% if res.url and h.is_url(res.url) %}
                 <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
               {% elif res.url %}
                 <p class="text-muted break-word">{{ _('URL:') }} {{ res.url }}</p>
@@ -100,9 +98,6 @@
 <!--              <p>{% trans dataset=h.get_translated(package, 'title'), url=h.url_for(package.type ~ '.read', id=package.name) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}-->
 <!--            {% endif %}-->
           </div>
-          <!-- Including an html block that can handle the iframe rendering thats behind an authentication page, eg: loading ArcGIS iframe with token -->
-          {% include "package/snippets/resource_auth_iframe.html" %}
-          <!-- End  -->
         {% endblock %}
       {% block data_preview %}
       {% block resource_view %}

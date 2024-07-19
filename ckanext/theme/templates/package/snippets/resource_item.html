@@ -17,8 +17,8 @@
 
 
 {% set login_url = h.url_for('user.login') %}
-<!-- bypassing login screen by setting url to login screen if the user is unauthenticated and resource format doesnot end with -public -->
-{% set url = login_url if g.user == '' and not res.format.endswith('-public') else url %}
+<!-- bypassing login screen by setting url to login screen if the user is unauthenticated and resource format doesnot match visualisation, visualization or map -->
+{% set url = login_url if g.user == '' and not res.format.lower() in ('visualization','visualisation','map',) else url %}
 
 
 
@@ -38,8 +38,9 @@
   {% endblock %}
   {% block resource_item_explore %}
 
-  <!-- Bypassing the login to download link for unauthenticated users, if the resource type ends with -public-->
-  {% if (g.user == "") and (not res.format.endswith('-public') ) %}
+  <!-- Bypassing the login to download link for unauthenticated users, if the resource type ends with visualisation, visualization, map-->
+  <!-- Map is for ArcGIS Public, and Visuali s|z ation for Tableau and Power BI Public, as in view without logging in to Ckan-->
+  {% if (g.user == "") and (not res.format.lower() in ('visualization','visualisation','map',) ) %}
     <div class="btn-group">
       <a href="{{ login_url }}">Login to download</a>
     </div>
@@ -57,8 +58,8 @@
           {% block explore_view %}
             <li>
               <a class="dropdown-item" href="{{ url }}">
-                <!-- moving dropdown checks here , so show the preview dropdown, if there is a view || format ends in -private || format ends in -public -->
-                {% if res.has_views or res.format.lower().endswith('-private') or res.format.lower().endswith('-public') %}
+                <!-- moving dropdown checks here , so show the preview dropdown, if there is a view  -->
+                {% if res.has_views  %}
                   <i class="fa fa-chart-bar"></i>
                   {{ _('Preview') }}
                 {% else %}
@@ -76,10 +77,10 @@
                 <i class="fa fa-arrow-circle-down"></i>
                 {{ _('Download') }}
             {% else %}
-              {% if not res.format.lower().endswith('-private') %}
+              
                 <i class="fa fa-external-link"></i>
                 {{ _('Go to resource') }}
-              {% endif %}
+              
             {% endif %}
           </a>
         </li>
