@@ -18,6 +18,7 @@ class ArcgisView(p.SingletonPlugin):
 
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IResourceView, inherit=True)
+    p.implements(p.ITemplateHelpers)
 
     def update_config(self, config: CKANConfig):
         p.toolkit.add_template_directory(config, 'templates')
