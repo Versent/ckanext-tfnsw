@@ -38,5 +38,6 @@ setup(
     tfnsw_metrics=ckanext.metrics.plugin:MetricsPlugin
     tfnsw_odiebot=ckanext.odiebot.plugin:OdieBotPlugin
     tfnsw_userreg=ckanext.userreg.plugin:UserRegPlugin
+    tfnsw_arcgisview=ckanext.arcgisview.plugin:ArcgisView
     '''
 )
