@@ -39,5 +39,6 @@ setup(
     tfnsw_odiebot=ckanext.odiebot.plugin:OdieBotPlugin
     tfnsw_userreg=ckanext.userreg.plugin:UserRegPlugin
     tfnsw_arcgisview=ckanext.arcgisview.plugin:ArcgisView
+    tfnsw_adjustableiframeview=ckanext.adjustableiframeview.plugin:AdjustableIframeView
     '''
 )
