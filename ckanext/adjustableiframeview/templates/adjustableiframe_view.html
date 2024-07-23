@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="/container_theme.css" />
+</head>
+{% set iframe_url=(resource_view.get('page_url') or resource.get('url')) %}
+
+{% set min_height = [] %}
+{% set base_url = iframe_url.split('?')[0] %}
+{% set query_params = iframe_url.split('?')[1].split('&') if '?' in iframe_url else [] %}
+{% set filtered_params = [] %}
+{% for param in query_params %}
+    {% if param.lower().startswith('iframeheight=') %}
+        {% set height = param.split('=')[1] %}
+        {% do min_height.append(height) %}
+    {% else %}
+        {% do filtered_params.append(param) %}
+    {% endif %}
+{% endfor %}
+
+{% set new_query_string = '&'.join(filtered_params) %}
+{% set new_iframe_url = base_url + ('?' ~ new_query_string if new_query_string else '') %}
+{% if (min_height) %}
+    <iframe  aria-label="Iframe View" src="{{ new_iframe_url }}"   data-module="data-viewer"  style="display: block; width: 100%; min-height: {{ min_height[0] }}px; margin: 0px; padding: 0px; border: none; "  scrolling="no" >
+{% else %}
+    <iframe  aria-label="Iframe View" src="{{ new_iframe_url }}"   data-module="data-viewer"  style="display: block; width: 100%; margin: 0px; padding: 0px; border: none; "  scrolling="no" >
+{% endif %}
