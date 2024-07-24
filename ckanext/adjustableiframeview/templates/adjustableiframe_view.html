@@ -20,6 +20,10 @@
 {% set new_iframe_url = base_url + ('?' ~ new_query_string if new_query_string else '') %}
 {% if (min_height) %}
     <iframe  aria-label="Iframe View" src="{{ new_iframe_url }}"   data-module="data-viewer"  style="display: block; width: 100%; min-height: {{ min_height[0] }}px; margin: 0px; padding: 0px; border: none; "  scrolling="no" >
+        <p>{{ _('Your browser does not support iframes.') }}</p>
+    </iframe>
 {% else %}
     <iframe  aria-label="Iframe View" src="{{ new_iframe_url }}"   data-module="data-viewer"  style="display: block; width: 100%; margin: 0px; padding: 0px; border: none; "  scrolling="no" >
+        <p>{{ _('Your browser does not support iframes.') }}</p>
+    </iframe>
 {% endif %}
