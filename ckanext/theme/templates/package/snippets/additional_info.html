@@ -1,4 +1,3 @@
-<!--Add an extra heading to the dataset_read view for ckan-->
 {% ckan_extends %}
 
 {# This snippet creates an Additional Info Table on the Dataset page,
@@ -11,12 +10,10 @@ This was added to support hyper link in the extras field, if the value starts wi
 {% block extras %}
     {% set extras = pkg_dict.extras %}
         {% for extra in extras %}
-            <!-- what an extra value looks like {'key': 'Related Dataset', 'value': 'https://www.google.com'}-->
             {% set key = extra.key  %}
             {% set value = extra.value %}
             <tr rel="dc:relation" resource="_:extra{{ i }}">
             <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key|e) }}</th>
-            <!--check if the value starts with https://, if so treat it as a hyperlink, else a regular field-->
             {% if h.is_url(value) %}
                 <td class="dataset-details"><a href={{ value }} target="_blank" >{{ value }}</a></td>
             {% else %}
