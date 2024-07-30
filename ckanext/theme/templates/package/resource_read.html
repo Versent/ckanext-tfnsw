@@ -33,19 +33,25 @@
                   {% endif %}
                 {% endblock action_manage %}
             {% if res.url and h.is_url(res.url) %}
-              <li>
-                <div class="btn-group">
-                <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
-                  {% if res.resource_type in ('listing', 'service') %}
-                    <i class="fa fa-eye"></i> {{ _('View') }}
-                  {% elif  res.resource_type == 'api' %}
-                    <i class="fa fa-key"></i> {{ _('API Endpoint') }}
-                  {% elif not res.has_views and not res.url_type == 'upload' %}
-                    <i class="fa fa-external-link"></i> {{ _('Go to resource') }}
-                  {% else %}
-                    <i class="fa fa-arrow-circle-down"></i> {{ _('Download') }}
-                  {% endif %}
-                </a>
+            <li>
+              <div class="btn-group">
+                {% if res.resource_type in ('listing', 'service') %}
+                  <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
+                  <i class="fa fa-eye"></i> {{ _('View') }}
+                {% elif  res.resource_type == 'api' %}
+                  <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
+                  <i class="fa fa-key"></i> {{ _('API Endpoint') }}
+                {% elif not res.has_views and not res.url_type == 'upload' and res.format.lower() in ('tableau-private') %}
+                  <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-external-link"></i> {{ _('Go to resource') }}
+                {% elif not res.has_views and not res.url_type == 'upload' %}
+                  <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
+                  <i class="fa fa-external-link"></i> {{ _('Go to resource') }}
+                {% else %}
+                  <a class="btn btn-primary resource-url-analytics" href="{{ res.url }}">
+                  <i class="fa fa-arrow-circle-down"></i> {{ _('Download') }}
+                {% endif %}
+              </a>
                 {% block download_resource_button %}
                   {% if res.datastore_active %}
                     <button class="btn btn-primary dropdown-toggle" role="button" id="dropdownDownloadFormat" data-bs-toggle="dropdown" aria-expanded="false" aria-label="list of downloadable formats">
@@ -81,7 +87,9 @@
         {% block resource_content %}
           {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>{% endblock %}
               {% block resource_read_url %}
-              {% if res.url and h.is_url(res.url) %}
+              {% if res.url and h.is_url(res.url) and res.format.lower() in ('tableau-private')%}
+                <p></p>
+              {% elif res.url and h.is_url(res.url) %}
                 <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
               {% elif res.url %}
                 <p class="text-muted break-word">{{ _('URL:') }} {{ res.url }}</p>
