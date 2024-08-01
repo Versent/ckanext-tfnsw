@@ -1,7 +1,7 @@
 
 
 {% set token = h.get_arcgis_token() %}
-{% set iframe_url = (resource_view.get('page_url') or resource.get('url')) + '&token=' + token '&locale=en-au' %}
+{% set iframe_url = (resource_view.get('page_url') or resource.get('url')) + '&token=' + token +'&locale=en-au' %}
 <iframe aria-label="ArcGIS Map" src="{{ iframe_url }}" frameborder="0" width="100%" style="height:100vh" data-module="data-viewer">
     <p>{{ _('Your browser does not support iframes.') }}</p>
 </iframe>
