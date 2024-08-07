@@ -102,7 +102,7 @@ If different groups are created, this configuration item **must** be set accordi
 
 - It is expected that CA Gateway performs some form of caching of authorization requests. If this is not the case and it invokes the `validate_api_key` action for each API call, further optimization (e.g. adding caching) may be needed in the plugin.
 
-## `validate_api_token`
+## `validate_cookie`
 
 This action has the following signature:
 
