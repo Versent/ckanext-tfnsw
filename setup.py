@@ -25,6 +25,7 @@ setup(
     },
     install_requires=[
         "Babel>=2.8.0",
+        "msal>=1.30.0"
     ],
 
     entry_points='''
@@ -40,5 +41,6 @@ setup(
     tfnsw_userreg=ckanext.userreg.plugin:UserRegPlugin
     tfnsw_arcgisview=ckanext.arcgisview.plugin:ArcgisView
     tfnsw_adjustableiframeview=ckanext.adjustableiframeview.plugin:AdjustableIframeView
+    tfnsw_powerbiview=ckanext.powerbiview.plugin:PowerbiView
     '''
 )
