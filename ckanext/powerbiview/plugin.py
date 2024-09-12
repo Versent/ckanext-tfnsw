@@ -28,12 +28,12 @@ class PowerbiView(p.SingletonPlugin):
 
     def info(self) -> dict[str, Any]:
         return {'name': 'powerbi_view',
-                'title': p.toolkit._('Embedded PowerBI'),
+                'title': p.toolkit._('PowerBI Authenticated'),
                 'schema': {'page_url': [ignore_empty, unicode_safe]},
                 'iframed': False,
                 'icon': 'link',
                 'always_available': True,
-                'default_title': p.toolkit._('Embedded PowerBI'),
+                'default_title': p.toolkit._('PowerBI Authenticated'),
                 }
 
     def can_view(self, data_dict: dict[str, Any]):
