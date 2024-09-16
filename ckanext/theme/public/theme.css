@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap);
+
 .account-masthead {
   background: #333 !important;
 }
@@ -108,21 +110,18 @@
   } */
 
 header {
-  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", helvetica,
-    arial, verdana, sans-serif !important;
+  font-family: "Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";";
 }
 
 body {
   font-size: 16px !important;
-  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", helvetica,
-    arial, verdana, sans-serif !important;
+  font-family: "Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";";
   background-color: #fefefe !important;
   color: #6d6e71 !important;
 }
 
 footer {
-  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", helvetica,
-    arial, verdana, sans-serif;
+  font-family: "Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";";
   margin-top: 60px;
 }
 
@@ -233,7 +232,7 @@ footer {
 /* filters */
 
 .module-heading {
-  background-color: #0a77bd !important;
+  background-color: #002664 !important;
   color: #fff !important;
   font-size: 16px !important;
   font-weight: normal !important;
@@ -877,8 +876,8 @@ summary {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #002664;
+  border-color: #002664;
   cursor: default;
 }
 
@@ -893,7 +892,7 @@ summary {
   padding: 6px 12px;
   line-height: 1.42857;
   text-decoration: none;
-  color: #337ab7;
+  color: #002664;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -1619,8 +1618,8 @@ footer .colour-stripe {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #002664;
+  border-color: #002664;
   cursor: default;
 }
 
@@ -1635,7 +1634,7 @@ footer .colour-stripe {
   padding: 6px 12px;
   line-height: 1.42857;
   text-decoration: none;
-  color: #337ab7;
+  color: #002664;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -1813,4 +1812,129 @@ footer .colour-stripe {
 }
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/*Adding changes to the css file to support drupal themes*/
+.masthead.drupal-theme  .main-navbar ul li a {
+  color: #777 !important;
+  background-color: #fefefe !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+}
+
+.footer-menus .drupal-theme li.first {
+  font-weight: bold;
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav.drupal-theme{
+  --bs-nav-link-padding-x: 0rem;
+  --bs-nav-link-padding-y: 0.4rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: #95a5a6;
+  --bs-nav-link-hover-color: #778485;
+  --bs-nav-link-disabled-color: #6c757d;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  text-transform: none !important;
+}
+
+.nav.drupal-theme > li > a {
+  display: block;
+  padding: 10px 0px;
+  position: relative;
+}
+
+#main-menu .drupal-theme a {
+  background-color: #fff;
+  color: #777;
+}
+
+#user-buttons .drupal-theme a {
+  padding: 1em 2.3em !important;
+  border: 1px solid #777;
+  border-radius: 3em;
+  margin-right: 1em;
+  font-weight: bold;
+  color: #777;
+  background-color: white;
+  position: absolute;
+  right: 320px;
+  top: 40px;
+  float: none;
+}
+
+.btn .drupal-theme{
+  background: none;
+  color: #6d6e71;
+  border: 1px solid;
+  font-weight: bold;
+}
+
+#block-dkan-sitewide-dkan-sitewide-user-menu--2 .drupal-theme a,
+#main-menu a {
+  color: #777;
+  background-color: white;
+}
+
+
+#block-dkan-sitewide-dkan-sitewide-user-menu-2 .drupal-theme a,
+#main-menu a {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn .drupal-theme{
+  background: none;
+  border: 1px solid;
+  color: #6d6e71;
+  font-weight: 700;
+}
+/* This is a duplicate */
+.footer-menus li.first { 
+  cursor: default;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.navbar-nav.drupal-theme {
+  text-transform: none;
+  color: black;
+}
+
+.nav-item .nav-link.drupal-theme{
+  color: #95a5a6;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.nav-item .nav-link.drupal-theme.footer{
+  color: #95a5a6;
+  padding-top: 6.4px;
+  padding-bottom: 6.4px;  
+  font-size: 1rem;
+  font-weight: 400;
+  --bs-link-hover-color: #778485;
+}
+
+.masthead.drupal-theme{
+  padding: 0rem !important;
+}
+
+h5.drupal-theme {
+  font-weight: 400;
+  font-size: 1.25rem;
+  font-family:"Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";"
+}
+
+.main{
+  background: #ffffff !important;
+}
+
+.page-item.active .page-link{
+  background-color: #002664 !important;
+  border-color: #002664 !important;
 }

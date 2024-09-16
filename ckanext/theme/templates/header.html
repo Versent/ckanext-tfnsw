@@ -1,6 +1,7 @@
-{% set dataset_type = h.default_package_type() %}
 
+{% set dataset_type = h.default_package_type() %}
 {% block header_wrapper %} {% block header_account %}
+{#
 <div class="account-masthead">
   <div class="container">
     {% block header_account_container_content %} {% if c.userobj %}
@@ -74,159 +75,183 @@
 
 
 </div>
-
+#}
 
 {% endblock %}
-<header class="masthead">
+
+<header class="masthead drupal-theme">
     {% block header_debug %} {% if g.debug and not g.debug_supress_header %}
     <div class="debug">Blueprint : {{ g.blueprint }}<br />View : {{ g.view }}</div>
     {% endif %} {% endblock %}
-
-
     {# Had to copy this from DKAN/Drupal and remove the CKAN style which is gross but no time #}
-    <div class="branding container">
-      <a class="logo navbar-btn pull-left" href="/" title="Home">
-        <img src="/static/logo.png" alt="Home">
-      </a>
-      <!-- views exposed search -->
-      <div class="search-box pull-right">
-        <section id="block-dkan-sitewide-dkan-sitewide-search-bar"
-                 class="block block-dkan-sitewide block-- clearfix compact-form-wrapper">
-          <div class="content">
-            <form action="/dataset/" method="get" id="dkan-sitewide-dataset-search-form" accept-charset="UTF-8">
-              <div>
-                  <div class="form-item form-type-textfield form-item-search form-group">
-                      <label for="edit-search">Search </label>
-                      <!-- Update the name attribute to "q" -->
-                      <input placeholder="search" class="form-control form-text compact-form-input" type="text"
-                             id="edit-search" name="q" value="" size="30" maxlength="128">
-                  </div>
-                  {# <input type="submit" id="edit-submit--9" name="op" value=""
-                         class="form-submit btn btn-default btn-primary compact-form-input"> #}
-                  <input type="submit" id="edit-submit--9" value=""
-                         class="form-submit btn btn-default btn-primary compact-form-input">
-              </div>
-          </form>
+<div class="ms-auto">
+  <nav class="navbar navbar-expand-lg justify-content-between navbar-dark  bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topbar-nav"
+        aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="topbar-nav" class="collapse navbar-collapse">
+        <div class="ms-auto d-flex d-flex flex-column flex-lg-row justify-content-end">
+          <div class="block block--tfnsw-opendata-theme-tfnswckanloginblock">
+            <ul class="navbar-nav drupal-theme ">
+              {% if not c.userobj %}
+              <li class="nav-item"><a href="/user/login" class="nav-link drupal-theme">Login</a></li>
+              <li class="nav-item"><a href="/user/register" class="nav-link drupal-theme">Register</a></li>
+              {% else %}
+              <li class="nav-item"><a href="/user/{{ c.userobj.name }}" class="nav-link drupal-theme">{{ c.userobj.name }}</a></li>
+              <li class="nav-item"><a href="/user/_logout" class="nav-link drupal-theme">Logout</a></li>
+              {% endif %}
+            </ul>
           </div>
-        </section>
-        <!-- user menu -->
-        {% if not c.userobj %}
-          <section id="block-dkan-sitewide-dkan-sitewide-user-menu--2"
-                   class="block block-dkan-sitewide block-- clearfix">
-            <div class="content">
-              <span class="links"><a href="/user/login">Log in</a><a href="/user/register"
-                                                                     class="sub">Register</a></span>
-            </div>
-          </section>
-        {% else %}
-          <section id="block-dkan-sitewide-dkan-sitewide-user-menu--2"
-                   class="block block-dkan-sitewide block-- clearfix">
-            <div class="content">
-              <span class="links logged-in"><a href="/user/{{ c.userobj.name }}">{{ c.userobj.name }}</a><a href="/user/_logout" class="sub">Log out</a></span>
-            </div>
-          </section>
-        {% endif %}
-        <!-- user menu -->
+
+          <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/block/block--tfnsw-ckan-login-menu-block.html.twig' -->
+          <!-- THEME DEBUG -->
+          <!-- THEME HOOK: 'block' -->
+          <!-- FILE NAME SUGGESTIONS:
+         ▪️ block--tfnsw-opendata-theme-search.html.twig
+         ▪️ block--system-menu-block--search.html.twig
+         ✅ block--system-menu-block.html.twig
+         ▪️ block--system.html.twig
+         ▪️ block.html.twig
+      -->
+          <!-- BEGIN OUTPUT from 'themes/contrib/radix/templates/block/block--system-menu-block.html.twig' -->
+          <div class="block block--tfnsw-opendata-theme-search block--system-menu">
+            <!-- THEME DEBUG -->
+            <!-- THEME HOOK: 'menu__search' -->
+            <!-- FILE NAME SUGGESTIONS:
+         ▪️ menu--search.html.twig
+         ✅ menu.html.twig
+      -->
+            <!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/menu/menu.html.twig' -->
+            <ul class="navbar-nav drupal-theme nav">
+              <li class="nav-item dropdown">
+                <a href="/relatedlinks" class="nav-link drupal-theme dropdown-toggle" data-bs-toggle="dropdown">Related Links</a>
+                <div class="dropdown-menu">
+                  <a href="https://www.transport.nsw.gov.au" class="dropdown-item">Transport for NSW</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="/search" class="nav-link drupal-theme" data-drupal-link-system-path="search">Search</a>
+              </li>
+            </ul>
+            <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/menu/menu.html.twig' -->
+          </div>
+          <!-- END OUTPUT from 'themes/contrib/radix/templates/block/block--system-menu-block.html.twig' -->
+          <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/region/region.html.twig' -->
+        </div>
       </div>
     </div>
-    
+  </nav>
+</div>
+
 
      <!--nav menu-->
-     <nav class="navbar navbar-expand-lg navigation-wrapper">
-      <div class="container-fluid justify-content-end" id="container-navbar">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg justify-content-between navbar-light  bg-light" data-bs-theme="light">
+      <div class="container">
+        <!-- THEME DEBUG -->
+        <!-- THEME HOOK: 'region' -->
+        <!-- FILE NAME SUGGESTIONS:
+       ▪️ region--navbar-branding.html.twig
+       ✅ region.html.twig-->
+        <!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/region/region.html.twig' -->
+        <!-- THEME DEBUG -->
+        <!-- THEME HOOK: 'block' -->
+        <!-- FILE NAME SUGGESTIONS:
+       ▪️ block--tfnsw-opendata-theme-site-branding.html.twig
+       ✅ block--system-branding-block.html.twig
+       ▪️ block--system.html.twig
+       ▪️ block.html.twig-->
+        <!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/block/block--system-branding-block.html.twig' -->
+        <div class="block block--tfnsw-opendata-theme-site-branding block--system-branding">
+          <a href="/" class="navbar-brand d-flex align-items-center " aria-label="">
+            <img src="/themes/custom/tfnsw_opendata_theme/logo.svg" width="240" alt="Transport Open Data logo" class="me-2">
+          </a>
+        </div>
+        <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/block/block--system-branding-block.html.twig' -->
+        <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/region/region.html.twig' -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main"
+          aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/dataset/">Browse Data</a>
-            </li>
-            <li class="nav-item dropdown show">
-              <a class="nav-link" href="/developers" role="button" aria-expanded="false">Developers <span class="fa fa-caret-down"></span></a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/get-started">Get Started</a></li>
-                <li><a class="dropdown-item" href="/documentation">Documentation</a></li>
-                <li><a class="dropdown-item" href="/developer-information">Developer Information</a></li>
-                <li><a class="dropdown-item" href="/status" title="">Status</a></li>
-                <li><a class="dropdown-item" href="/resources">Resources</a></li>
-                <li><a class="dropdown-item" href="/data-updates">Data Updates</a></li>
-                <li><a class="dropdown-item" href="/faqs" title="">FAQs</a></li>
+    
+        <div id="navbar-main" class="collapse navbar-collapse">
+          <div class="ms-auto">
+            <!-- THEME DEBUG -->
+            <!-- THEME HOOK: 'region' -->
+            <!-- FILE NAME SUGGESTIONS: ▪️ region--navbar-right.html.twig ✅ region.html.twig -->
+            <!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/region/region.html.twig' -->
+            <!-- THEME DEBUG -->
+            <!-- THEME HOOK: 'block' -->
+            <!-- FILE NAME SUGGESTIONS:
+        ▪️ block--tfnsw-opendata-theme-main-menu.html.twig
+        ▪️ block--system-menu-block--main.html.twig
+        ✅ block--system-menu-block.html.twig
+        ▪️ block--system.html.twig
+        ▪️ block.html.twig
+    -->
+            <!-- BEGIN OUTPUT from 'themes/contrib/radix/templates/block/block--system-menu-block.html.twig' -->
+            <div class="block block--tfnsw-opendata-theme-main-menu block--system-menu">
+              <!-- THEME DEBUG -->
+              <!-- THEME HOOK: 'menu__main' -->
+              <!-- FILE NAME SUGGESTIONS:
+       ✅ menu--main.html.twig
+       ✅ menu--main.html.twig
+       ▪️ menu.html.twig
+    -->
+              <!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/menu/menu--main.html.twig' -->
+              <ul class="nav navbar-nav drupal-theme ">
+                <li class="nav-item">
+                  <a href="/about" class="nav-link drupal-theme">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="/browse" class="nav-link drupal-theme dropdown-toggle" data-bs-toggle="dropdown">Browse</a>
+                  <div class="dropdown-menu">
+                    <a href="/dataset/" class="dropdown-item">Datasets</a>
+                    <a href="/dataset/?res_format=map" class="dropdown-item">Geospatial</a>
+                    <a href="/dataset/?res_format=visualisation" class="dropdown-item">Insights</a>
+                    <a href="/gtfs-studio/#" class="dropdown-item">GTFS Studio</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="/developers" class="nav-link drupal-theme dropdown-toggle" data-bs-toggle="dropdown">Developers</a>
+                  <div class="dropdown-menu">
+                    <a href="/developers/getstarted" class="dropdown-item">Get Started</a>
+                    <a href="/dataset-updates" class="dropdown-item">Data Updates</a>
+                    <a href="/developers/documentation" class="dropdown-item">Documentation</a>
+                    <a href="/developer/resources" class="dropdown-item">Resources</a>
+                    <a href="/tfnsw-apistatus" class="dropdown-item" data-drupal-link-system-path="tfnsw-apistatus">Status</a>
+                    <a href="/developers/widgets" class="dropdown-item">Widgets</a>
+                    <a href="/faqs" class="dropdown-item" data-drupal-link-system-path="faqs">FAQ</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="/datainaction" class="nav-link drupal-theme dropdown-toggle" data-bs-toggle="dropdown">Data In Action</a>
+                  <div class="dropdown-menu">
+                    <a href="/datastories" class="dropdown-item" data-drupal-link-system-path="datastories">Data Stories</a>
+                    <a href="/innovation" class="dropdown-item" data-drupal-link-system-path="innovation">Innovation Challenges</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a href="/datapartnerships" class="nav-link drupal-theme" data-drupal-link-system-path="node/28">Data Partnerships</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="/forum" class="nav-link drupal-theme dropdown-toggle" data-bs-toggle="dropdown">Forum</a>
+                  <div class="dropdown-menu">
+                    <a href="/blog" class="dropdown-item" data-drupal-link-system-path="blog">Blog</a>
+                    <a href="/forum" class="dropdown-item">Forum</a>
+                  </div>
+                </li>
               </ul>
-            </li>
-            <li class="nav-item dropdown show">
-              <a class="nav-link" href="/innovation" role="button" aria-expanded="false">Innovation <span class="fa fa-caret-down"></span></a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/innovation-challenges">Innovation Challenges</a></li>
-                <li><a class="dropdown-item" href="/transport-nsw-endorsed-apps">Transport for NSW Endorsed Apps</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://opendataforum.transport.nsw.gov.au">Forum</a>
-            </li>
-            <li class="nav-item dropdown show">
-              <a class="nav-link" href="/gtfs-studio/#" role="button" aria-expanded="false">GTFS Studio <span class="fa fa-caret-down"></span></a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="https://opendata.transport.nsw.gov.au/sites/default/files/GTFS%20Studio%20User%20Guide_v1.0.pdf">GTFS Studio User Guide</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blog">Blog</a>
-            </li>
-          </ul>
+              <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/menu/menu--main.html.twig' -->
+            </div>
+            <!-- END OUTPUT from 'themes/contrib/radix/templates/block/block--system-menu-block.html.twig' -->
+            <!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/tfnsw_opendata_theme/templates/region/region.html.twig' -->
+          </div>
         </div>
       </div>
     </nav>
     <!--nav menu-->
 
-
-      {# <div class="navigation-wrapper navbarmenu">
-        <nav id="navbar-main" class="navbar navbar-light navbar-main">
-      
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
-            aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa fa-bars text-white"></span>
-          </button>
-        <div class="container">
-          <ul id="main-menu" class="nav justify-content-end">
-            <li class="nav-item"><a href="/dataset/" title="">Browse Data</a></li>
-            <li class="nav-item dropdown">
-              <a href="/developers" class="nav-item" aria-expanded="false">Developers <span class="fa fa-caret-down"></span></a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/get-started">Get Started</a>
-                <a class="dropdown-item" href="/documentation">Documentation</a>
-                <a class="dropdown-item" href="/developer-information">Developer Information</a>
-                <a class="dropdown-item" href="/status" title="">Status</a>
-                <a class="dropdown-item" href="/resources">Resources</a>
-                <a class="dropdown-item" href="/data-updates">Data Updates</a>
-                <a class="dropdown-item" href="/faqs" title="">FAQs</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="/innovation" class="nav-link" aria-expanded="false">Innovation <span class="fa fa-caret-down"></span></a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/innovation-challenges">Innovation Challenges</a>
-                <a class="dropdown-item" href="/transport-nsw-endorsed-apps">Transport for NSW Endorsed Apps</a>
-              </div>
-            </li>
-            <li class="nav-item"><a href="https://opendataforum.transport.nsw.gov.au/" title="" target="_blank">Forum</a></li>
-            <li class="nav-item dropdown">
-              <a href="/gtfs-studio/#" title="" class="nav-link" aria-expanded="false">GTFS Studio <span class="fa fa-caret-down"></span></a>
-              <div class="dropdown-menu">
-                <a class ="dropdown-item"
-                    href="https://opendata.transport.nsw.gov.au/sites/default/files/GTFS%20Studio%20User%20Guide_v1.0.pdf"
-                    title="">GTFS Studio User Guide</a>
-                </div>
-            </li>
-            <li class="nav-item"><a href="/blog" title="">Blog</a></li>
-          </ul>
-        </div>
-      
-    </nav>
-    </div> #}
 </header>
-<div class="colour-stripe">
-  <img src="/static/colour-stripe.png"
-    alt="Colour Stripe"></img>
-</div>
 {% endblock %}
