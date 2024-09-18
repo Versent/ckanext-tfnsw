@@ -2288,3 +2288,11 @@ h5.drupal-theme {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
+
+  .page__footer .bg-primary{
+    background-color: var(--ckan-primary-blue) !important;
+   }
+  
+   .ms-auto .bg-primary{
+    background-color: var(--ckan-primary-blue) !important;
+   }
