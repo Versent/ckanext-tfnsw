@@ -1,0 +1,248 @@
+/* Odie Bot */
+.ac-pushButton {
+	border-radius: 20px;
+	outline: none;
+	/* white-space: normal !important;
+	overflow-wrap: break-word !important; */
+}
+
+#webchat {
+	font-size: 16px;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: 9001;
+}
+
+#webchat * {
+	box-sizing: border-box !important;
+	font-family: "TransText Rm", Arial, sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	white-space: normal !important;
+}
+
+.virtual-assistant-wrap {
+	width: 377px;
+	right: 25px;
+	bottom: 20px;
+	transition: all .3s;
+	background: #fff;
+	position: relative;
+	border-radius: 16px;
+	overflow: hidden;
+	opacity: 0;
+	box-shadow: 0 8px 14px 0 rgb(0 0 0 / 10%);
+
+}
+
+.va-show.virtual-assistant-wrap {
+	transform: translateX(0) translateY(-70px);
+	opacity: 1;
+	min-height: 330px !important;
+}
+
+.va-header-wrap {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	background: #fff;
+	padding: 23px 0;
+	height: 56px;
+	box-shadow: 0 5px 7px 0 rgb(0 0 0 / 10%);
+	-webkit-box-shadow: 0 5px 7px 0 rgb(0 0 0 / 10%);
+}
+
+.va-header {
+	display: flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+
+.va-header h1 {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	text-align: left;
+	color: #1c1c1b;
+	font-size: 1em;
+	letter-spacing: .5px;
+	font-weight: bold;
+	padding: 0 20px 0 20px;
+	margin-top: -5px;
+}
+
+.va-close-btn {
+	display: block;
+	color: #000;
+	/* font-weight: 700; */
+	text-decoration: none;
+	margin-top: -10px;
+	font-size: 33px;
+	padding-right: 24px;
+}
+
+#va a {
+	background-color: transparent;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.buttonDiv {
+	display: flex;
+	flex-direction: row;
+	place-content: flex-end;
+	bottom: 2px;
+	height: 100% !important;
+	width: 100% !important;
+}
+
+@keyframes icon_appear {
+	0% {
+		opacity: .4;
+		transform: translateX(30px);
+		-moz-transform: translateX(30px);
+		-o-transform: translateX(30px);
+		-webkit-transform: translateX(30px);
+		-ms-transform: translateX(30px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+		-moz-transform: translateX(0);
+		-o-transform: translateX(0);
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+	}
+}
+
+@keyframes icon_in {
+	0% {
+		transform: scale(0);
+		-moz-transform: scale(0);
+		-o-transform: scale(0);
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		-moz-transform: scale(1);
+		-o-transform: scale(1);
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes icon_out {
+	0% {
+		transform: scale(1);
+		-moz-transform: scale(1);
+		-o-transform: scale(1);
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(0);
+		-moz-transform: scale(0);
+		-o-transform: scale(0);
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		opacity: 0;
+	}
+}
+
+.botbtn {
+	width: 60px;
+	height: 60px;
+	text-indent: -9999px;
+	position: absolute;
+	right: 25px;
+	bottom: 20px;
+	border-radius: 100px;
+	background-color: #0069b4;
+	box-shadow: 0 6px 8px 0 rgb(0 0 0 / 30%);
+	animation: 1s icon_appear 1 ease;
+	-webkit-animation: 1s icon_appear 1 ease;
+}
+
+/* .va-active{
+  opacity:0;
+  display: block;
+  } */
+
+.va-active .va-trigger-chat {
+	animation: .5s icon_out 1 linear forwards;
+}
+
+.va-active .va-trigger-cross {
+	animation: .5s icon_in 1 linear forwards;
+}
+
+/* .va-inactive{
+  opacity:1;
+  display: block;
+  } */
+
+.va-inactive .va-trigger-chat {
+	animation: .5s icon_in 1 linear forwards;
+}
+
+.va-inactive .va-trigger-cross {
+	animation: .5s icon_out 1 linear forwards;
+}
+
+.va-trigger-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	object-fit: contain;
+	-o-object-fit: contain;
+	display: block;
+}
+
+.showHide {
+	height: 30px;
+	width: 30px;
+	/* margin: 15px; */
+	vertical-align: middle;
+}
+
+.cross {
+	height: 25%;
+	width: 25%;
+	/* margin: 15px; */
+	vertical-align: middle;
+}
+
+#containerEmp {
+	height: 470px;
+	/* height: 500px; */
+	/* overflow: auto; */
+	width: 100%;
+	padding: 15px;
+	min-height: 200px !important;
+	/* font-size: 12px; */
+}
+
+/* .active {
+	display: block;
+  } */
+
+/* .inActive {
+	display: none;
+  } */
+
+@media (max-width: 760px) {
+	#webchat {
+		display: none;
+	}
+}
