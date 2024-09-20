@@ -1,5 +1,5 @@
 {% ckan_extends %}
 {% block scripts %}
   {{ super() }}
-  <script src="/static/odiebot.js" defer onload="odiebot('{{ h.get_odiebot_token() }}')"></script>
+  <script src="{{ h.url_for_static('/static/odiebot.js') }}" defer onload="odiebot('{{ h.get_odiebot_token() }}')"></script>
 {% endblock %}
