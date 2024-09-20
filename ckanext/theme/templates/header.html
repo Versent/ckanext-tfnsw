@@ -1,6 +1,6 @@
 {% set dataset_type = h.default_package_type() %}
 {% block header_wrapper %} {% block header_account %}
-{#
+{# Temporarily commented out the "user" masthead for account functionality, re-enable after consulting TFNSW
 <div class="account-masthead">
   <div class="container">
     {% block header_account_container_content %} {% if c.userobj %}
@@ -95,12 +95,12 @@
             <div class="block block--tfnsw-opendata-theme-tfnswckanloginblock">
               <ul class="navbar-nav drupal-theme ">
                 {% if not c.userobj %}
-                <li class="nav-item"><a href="/user/login" class="nav-link drupal-theme">Login</a></li>
-                <li class="nav-item"><a href="/user/register" class="nav-link drupal-theme">Register</a></li>
+                <li class="nav-item"><a href="{{ h.url_for('user.login', id=c.userobj.name) }}" class="nav-link drupal-theme">Login</a></li>
+                <li class="nav-item"><a href="{{ h.url_for('user.register', id=c.userobj.name) }}" class="nav-link drupal-theme">Register</a></li>
                 {% else %}
-                <li class="nav-item"><a href="/user/{{ c.userobj.name }}" class="nav-link drupal-theme">{{
+                <li class="nav-item"><a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="nav-link drupal-theme">{{
                     c.userobj.name }}</a></li>
-                <li class="nav-item"><a href="/user/_logout" class="nav-link drupal-theme">Logout</a></li>
+                <li class="nav-item"><a href="{{ h.url_for('user.logout') }}" class="nav-link drupal-theme">Logout</a></li>
                 {% endif %}
               </ul>
             </div>
@@ -136,7 +136,7 @@
         
 <a href="/" class="navbar-brand d-flex align-items-center " aria-label="">
           
-<img src="/themes/custom/tfnsw_opendata_theme/logo.svg" width="240" alt="Transport Open Data logo" class="me-2">
+  <img src="{{ h.url_for_static('logo.svg') }}" width="240" alt="Transport Open Data logo" class="me-2">
 
       
 </a>
@@ -174,10 +174,10 @@
       <li class="nav-item dropdown">
                     <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Browse</a>
                         <div class="dropdown-menu">
-            <a href="https://opendata.dev.transport.nsw.gov.au/dataset/" class="dropdown-item">Datasets</a>
-            <a href="https://opendata.dev.transport.nsw.gov.au/dataset/?res_format=map" class="dropdown-item">Geospatial</a>
-            <a href="https://opendata.dev.transport.nsw.gov.au/dataset/?res_format=visualisation" class="dropdown-item">Insights</a>
-            <a href="https://opendata.transport.nsw.gov.au/gtfs-studio" class="dropdown-item">GTFS Studio</a>
+            <a href="/ckan/dataset/" class="dropdown-item">Datasets</a>
+            <a href="/ckan/dataset/?res_format=map" class="dropdown-item">Geospatial</a>
+            <a href="/ckan/dataset/?res_format=visualisation" class="dropdown-item">Insights</a>
+            <a href="/gtfs-studio" class="dropdown-item">GTFS Studio</a>
 </div>
                             </li>
                     

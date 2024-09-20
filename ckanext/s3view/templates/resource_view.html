@@ -28,7 +28,7 @@ permissions and limitations under the License.
         integrity="sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/s3view/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ h.url_for_static('/s3view/styles.css') }}">
 </head>
 
 <!-- DEBUG: Enable this for red outline on all elements -->
@@ -119,7 +119,7 @@ permissions and limitations under the License.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script src="/s3view/scripts.js"></script>
+<script src="{{ h.url_for_static('/s3view/scripts.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
