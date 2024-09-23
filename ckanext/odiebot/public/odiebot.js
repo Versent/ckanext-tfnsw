@@ -39,9 +39,9 @@ function load_bot() {
 	</div>
 	<div class=buttonDiv>
 		<a id="botbutton" href="javascript:void(0);" class="botbtn va-inactive" onclick="toggle_bot()">
-			<img src="odiebot.svg"
+			<img src="/odiebot.svg"
 				class="va-trigger-img showHide va-trigger-chat" />
-			<img src="cross.svg"
+			<img src="/cross.svg"
 				class="va-trigger-img cross va-trigger-cross" />
 		</a>
 	</div>
