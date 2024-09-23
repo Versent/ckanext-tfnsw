@@ -39,9 +39,9 @@ function load_bot() {
 	</div>
 	<div class=buttonDiv>
 		<a id="botbutton" href="javascript:void(0);" class="botbtn va-inactive" onclick="toggle_bot()">
-			<img src="/odiebot.svg"
+			<img src="/ckan/odiebot.svg"
 				class="va-trigger-img showHide va-trigger-chat" />
-			<img src="/cross.svg"
+			<img src="/ckan/cross.svg"
 				class="va-trigger-img cross va-trigger-cross" />
 		</a>
 	</div>
@@ -51,7 +51,7 @@ function load_bot() {
 
   const cssLink = document.createElement("link");
   cssLink.rel = "stylesheet";
-  cssLink.href = "odiebot.css";
+  cssLink.href = "/ckan/odiebot.css";
   document.head.appendChild(cssLink);
 }
 
