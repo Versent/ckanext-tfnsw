@@ -1961,6 +1961,7 @@ footer .colour-stripe {
 
 /*------ Fix the main.css styles that refer to image locations not relative to root_path --------------*/
 
+/*
 .media-grid, .module-grid {
   list-style: none;
   padding-left: 0px;
@@ -2017,3 +2018,4 @@ footer .colour-stripe {
   text-indent: -900em;
   background: url("/ckan/base/images/sprite-resource-icons.png") no-repeat 0 0 !important;
 }
+*/
