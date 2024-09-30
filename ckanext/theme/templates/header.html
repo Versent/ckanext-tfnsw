@@ -1,6 +1,5 @@
 {% set dataset_type = h.default_package_type() %}
 {% block header_wrapper %} {% block header_account %}
-{# Temporarily commented out the "user" masthead for account functionality, re-enable after consulting TFNSW
 <div class="account-masthead">
   <div class="container">
     {% block header_account_container_content %} {% if c.userobj %}
@@ -74,7 +73,7 @@
 
 
 </div>
-#}
+
 
 {% endblock %}
 
