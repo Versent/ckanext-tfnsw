@@ -137,6 +137,7 @@
           
   <img src="{{ h.url_for_static('logo.svg') }}" width="240" alt="Transport Open Data logo" class="me-2">
 
+
       
 </a>
 
@@ -173,10 +174,10 @@
       <li class="nav-item dropdown">
                     <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Browse</a>
                         <div class="dropdown-menu">
-            <a href="/ckan/dataset/" class="dropdown-item">Datasets</a>
-            <a href="/ckan/dataset/?res_format=map" class="dropdown-item">Geospatial</a>
-            <a href="/ckan/dataset/?res_format=visualisation" class="dropdown-item">Insights</a>
-            <a href="/gtfs-studio" class="dropdown-item">GTFS Studio</a>
+            <a href="/ckan/dataset" class="dropdown-item" data-drupal-link-system-path="node/89">Datasets</a>
+            <a href="/ckan/dataset?res_format=map" class="dropdown-item" data-drupal-link-query="{&quot;res_format&quot;:&quot;map&quot;}" data-drupal-link-system-path="node/89">Geospatial</a>
+            <a href="/ckan/dataset?res_format=visualisation" class="dropdown-item" data-drupal-link-query="{&quot;res_format&quot;:&quot;visualisation&quot;}" data-drupal-link-system-path="node/89">Insights</a>
+            <a href="/gtfs-studio" class="dropdown-item" data-drupal-link-system-path="node/48">GTFS Studio</a>
 </div>
                             </li>
                     
@@ -184,10 +185,10 @@
       <li class="nav-item dropdown">
                     <a href="/developers" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-drupal-link-system-path="developers">Developers</a>
                         <div class="dropdown-menu">
-            <a href="/developers/getstarted" class="dropdown-item" data-drupal-link-system-path="node/44">Get Started</a>
+            <a href="/developers" class="dropdown-item" data-drupal-link-system-path="developers">Developers</a>
             <a href="/dataset-status" class="dropdown-item" data-drupal-link-system-path="dataset-status">Data Updates</a>
-            <a href="/tfnsw-apistatus" class="dropdown-item" data-drupal-link-system-path="tfnsw-apistatus">Status</a>
-            <a href="/faqs" class="dropdown-item" data-drupal-link-system-path="faqs" aria-current="page">FAQ</a>
+            <a href="/tfnsw-apistatus" class="dropdown-item" data-drupal-link-system-path="tfnsw-apistatus">API Status</a>
+            <a href="/faqs" class="dropdown-item" data-drupal-link-system-path="faqs">FAQ</a>
 </div>
                             </li>
                     
