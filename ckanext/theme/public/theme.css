@@ -1902,6 +1902,13 @@ footer .colour-stripe {
     font-size: 16px;
     text-transform: none;
 }
+/*--------------------Enforce grey background for navbar and padding---------------------------------*/
+
+.navbar.navbar-expand-lg.justify-content-between.navbar-light{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  --bs-light-rgb: 236, 240, 241;
+}
 /*-------------------Odie bot button background---------------------------------------*/
 .botbtn{
     background-color: var(--ckan-primary-blue) !important;
@@ -1943,10 +1950,6 @@ footer .colour-stripe {
   border-color: var(--ckan-primary-blue) !important;
 }
 
-  .navbar.navbar-expand-lg.justify-content-between.navbar-light{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
 /*-------------------Enforcing footer and header background color--------------------------------------*/
   .page__footer .bg-primary{
     background-color: var(--ckan-primary-blue) !important;
