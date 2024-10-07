@@ -6,7 +6,9 @@
 {% block breadcrumb_content %}
   <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type) }}</li>
 {% endblock %}
-
+{% block page_title %}
+  <h1 class="page-title">Datasets</h1>
+{% endblock %}
 {% block primary_content %}
   <section class="module">
     <div class="module-content">
