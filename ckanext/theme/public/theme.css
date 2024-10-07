@@ -95,7 +95,7 @@ header {
 
 body {
   font-size: 16px !important;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif !important;
   background-color: #fefefe !important;
   color: #6d6e71 !important;
 }
@@ -1960,3 +1960,22 @@ footer .colour-stripe {
    }
 /*-----------------------------------------------------------------------------------------------------*/
 
+/*-------------------Bringing ckan breadcrumb style in line with drupal ------------------------------*/
+
+.toolbar .home span {
+  display: block !important;
+}
+
+.toolbar .breadcrumb {
+  font-size: 16px !important;
+}
+
+.toolbar .breadcrumb a {
+  color: var(--ckan-primary-blue) !important;
+  text-decoration: underline !important;
+}
+
+.toolbar .breadcrumb .active a,
+.toolbar .breadcrumb a.active {
+   font-weight: normal !important; 
+}

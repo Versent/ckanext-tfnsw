@@ -1,2 +1,6 @@
-{# Used to insert the home icon into a breadcrumb #}
-<li class="home"><a href="{{ config.get('ckan.site_url') }}" aria-label="{{ _('Home') }}"><i class="fa fa-home"></i><span> {{ _('Home') }}</span></a></li>
+{# Used to insert the home icon into a breadcrumb 
+# if we need to bring back the home icon to the breadcrumb
+# add the below code before span tag
+# <i class="fa fa-home"></i>
+#}
+<li class="home"><a href="{{ config.get('ckan.site_url') }}" aria-label="{{ _('Home') }}"><span> {{ _('Home') }}</span></a></li>
