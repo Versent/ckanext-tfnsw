@@ -115,7 +115,7 @@
   <nav class="navbar navbar-expand-lg justify-content-between navbar-light  bg-light" data-bs-theme="light">
     <div class="container">
       <div class="block block--tfnsw-opendata-theme-site-branding block--system-branding">
-        <a href="/" class="navbar-brand d-flex align-items-center " aria-label="">
+        <a href="/" class="navbar-brand d-flex align-items-center py-0" aria-label="">
           <img src="{{ h.url_for_static('logo.svg') }}" width="240" alt="Transport Open Data logo" class="me-2">
         </a>
       </div>
@@ -130,16 +130,17 @@
                 <a href="/about" class="nav-link" data-drupal-link-system-path="node/45">About</a>
               </li>
               <li class="nav-item dropdown">
-                <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Browse</a>
+                <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Browse</a>
                 <div class="dropdown-menu">
                   <a href="/data/dataset/" class="dropdown-item">Datasets</a>
                   <a href="/data/dataset/?tags=geospatial" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;geospatial&quot;}">Geospatial</a>
                   <a href="/data/dataset/?tags=insights" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;insights&quot;}">Insights</a>
+                  <a href="/curatedviews" class="dropdown-item" data-drupal-link-system-path="node/49">Curated Views</a>
                   <a href="/gtfs-studio/" class="dropdown-item">GFTS Studio</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a href="/developers" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-drupal-link-system-path="developers">Developers</a>
+                <a href="/developers-menu" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-drupal-link-system-path="developers">Developers</a>
                 <div class="dropdown-menu">
                   <a href="/developers" class="dropdown-item" data-drupal-link-system-path="developers">Developers</a>
                   <a href="/dataset-status" class="dropdown-item" data-drupal-link-system-path="dataset-status">Data Updates</a>
