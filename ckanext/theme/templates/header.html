@@ -75,8 +75,7 @@
   <div class="ms-auto">
     <nav class="navbar navbar-expand-lg justify-content-between navbar-dark  bg-primary" data-bs-theme="dark">
       <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topbar-nav"
-          aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topbar-nav" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div id="topbar-nav" class="collapse navbar-collapse">
@@ -97,7 +96,7 @@
               <ul class="navbar-nav drupal-theme nav">
                 <li class="nav-item dropdown">
                   <a href="/relatedlinks" class="nav-link drupal-theme  dropdown-toggle"
-                    data-bs-toggle="dropdown">Related Links</a>
+                                          data-bs-toggle="dropdown">Related Links</a>
                   <div class=" dropdown-menu">
                     <a href="https://www.transport.nsw.gov.au" class=" dropdown-item">Transport for
                       NSW</a>
@@ -115,106 +114,62 @@
   <!--nav menu-->
   <nav class="navbar navbar-expand-lg justify-content-between navbar-light  bg-light" data-bs-theme="light">
     <div class="container">
-
-            
-<div class="block block--tfnsw-opendata-theme-site-branding block--system-branding">
-
-
-  
-
-        
-<a href="/" class="navbar-brand d-flex align-items-center " aria-label="">
-          
-  <img src="{{ h.url_for_static('logo.svg') }}" width="240" alt="Transport Open Data logo" class="me-2">
-
-      
-</a>
-
-  
-</div>
-
-
-    
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-<div id="navbar-main" class="collapse navbar-collapse">
-        
-            <div class="ms-auto">
-        
-<div class="block block--tfnsw-opendata-theme-main-menu block--system-menu">
-
-
-  
-
-          
-
-
-
-<ul class="nav navbar-nav">
-                        
-              
-      <li class="nav-item">
-                    <a href="/about" class="nav-link" data-drupal-link-system-path="node/45">About</a>
-                </li>
-                    
-              
-      <li class="nav-item dropdown">
-                    <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Browse</a>
-                        <div class="dropdown-menu">
-            <a href="/data/dataset/" class="dropdown-item">Datasets</a>
-            <a href="/data/dataset/?tags=geospatial" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;geospatial&quot;}">Geospatial</a>
-            <a href="/data/dataset/?tags=insights" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;insights&quot;}">Insights</a>
-            <a href="/gtfs-studio" class="dropdown-item">GFTS Studio</a>
-</div>
-                            </li>
-                    
-              
-      <li class="nav-item dropdown">
-                    <a href="/developers" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-drupal-link-system-path="developers">Developers</a>
-                        <div class="dropdown-menu">
-            <a href="/developers" class="dropdown-item" data-drupal-link-system-path="developers">Developers</a>
-            <a href="/dataset-status" class="dropdown-item" data-drupal-link-system-path="dataset-status">Data Updates</a>
-            <a href="/tfnsw-apistatus" class="dropdown-item" data-drupal-link-system-path="tfnsw-apistatus">API Status</a>
-            <a href="/faqs" class="dropdown-item" data-drupal-link-system-path="faqs">FAQ</a>
-</div>
-                            </li>
-                    
-              
-      <li class="nav-item dropdown">
-                    <a href="/datainaction" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Data In Action</a>
-                        <div class="dropdown-menu">
-            <a href="/datastories" class="dropdown-item" data-drupal-link-system-path="datastories">Data Stories</a>
-            <a href="/innovation" class="dropdown-item" data-drupal-link-system-path="innovation">Innovation Challenges</a>
-</div>
-                            </li>
-                    
-              
-      <li class="nav-item">
-                    <a href="/datapartnerships" class="nav-link" data-drupal-link-system-path="node/28">Data Partnerships</a>
-                </li>
-                    
-              
-      <li class="nav-item dropdown">
-                    <a href="/forum" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Forum</a>
-                        <div class="dropdown-menu">
-            <a href="/blog" class="dropdown-item" data-drupal-link-system-path="blog">Blog</a>
-            <a href="https://opendataforum.transport.nsw.gov.au" class="dropdown-item">Forum</a>
-</div>
-                            </li>
-          </ul>
-
-
-    
-</div>
-
-
-    </div>
+      <div class="block block--tfnsw-opendata-theme-site-branding block--system-branding">
+        <a href="/" class="navbar-brand d-flex align-items-center " aria-label="">
+          <img src="{{ h.url_for_static('logo.svg') }}" width="240" alt="Transport Open Data logo" class="me-2">
+        </a>
       </div>
-
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbar-main" class="collapse navbar-collapse">
+        <div class="ms-auto">
+          <div class="block block--tfnsw-opendata-theme-main-menu block--system-menu">
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <a href="/about" class="nav-link" data-drupal-link-system-path="node/45">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/browse" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Browse</a>
+                <div class="dropdown-menu">
+                  <a href="/data/dataset/" class="dropdown-item">Datasets</a>
+                  <a href="/data/dataset/?tags=geospatial" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;geospatial&quot;}">Geospatial</a>
+                  <a href="/data/dataset/?tags=insights" class="dropdown-item" data-drupal-link-query="{&quot;tags&quot;:&quot;insights&quot;}">Insights</a>
+                  <a href="/gtfs-studio/" class="dropdown-item">GFTS Studio</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/developers" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-drupal-link-system-path="developers">Developers</a>
+                <div class="dropdown-menu">
+                  <a href="/developers" class="dropdown-item" data-drupal-link-system-path="developers">Developers</a>
+                  <a href="/dataset-status" class="dropdown-item" data-drupal-link-system-path="dataset-status">Data Updates</a>
+                  <a href="/tfnsw-apistatus" class="dropdown-item" data-drupal-link-system-path="tfnsw-apistatus">API Status</a>
+                  <a href="/faqs" class="dropdown-item" data-drupal-link-system-path="faqs">FAQ</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/datainaction" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Data In Action</a>
+                <div class="dropdown-menu">
+                  <a href="/datastories" class="dropdown-item" data-drupal-link-system-path="datastories">Data Stories</a>
+                  <a href="/innovation" class="dropdown-item" data-drupal-link-system-path="innovation">Innovation Challenges</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="/datapartnerships" class="nav-link" data-drupal-link-system-path="node/28">Data Partnerships</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/forum" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Forum</a>
+                <div class="dropdown-menu">
+                  <a href="/blog" class="dropdown-item" data-drupal-link-system-path="blog">Blog</a>
+                  <a href="https://opendataforum.transport.nsw.gov.au" class="dropdown-item">Forum</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
+  </nav>
   <!--nav menu-->
 
 </header>
