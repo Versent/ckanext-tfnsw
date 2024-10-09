@@ -33,7 +33,7 @@
           {% endblock %}
 
           {% block toolbar %}
-            <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+            <div class="toolbar mb-2 p-0" role="navigation" aria-label="{{ _('Breadcrumb') }}">
               {% block breadcrumb %}
                 {% if self.breadcrumb_content() | trim %}
                   <ol class="breadcrumb">
