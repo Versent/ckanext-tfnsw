@@ -21,11 +21,12 @@
       {{ form.input('login', label=_("Username or Email"), id='field-login', value="", error=username_error, classes=["control-medium"]) }}
     
       {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"]) }}
-        
+    
+        {# Commenting this out since  form action is not checking if a valid captcha is present or not
       {% if g.recaptcha_publickey %}
         {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
       {% endif %}
-    
+        #}
       <div class="form-actions">
         {% block login_button %}
         <button class="btn btn-primary" type="submit">{{ _('Login') }}</button>
