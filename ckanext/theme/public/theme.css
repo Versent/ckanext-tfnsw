@@ -1829,8 +1829,8 @@ footer .colour-stripe {
   text-transform: none;
   color:  #ffffff;
   font-size: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .block--tfnsw-opendata-theme-tfnswckanloginblock .dropdown-menu {
     font-size: 16px;
@@ -1839,6 +1839,29 @@ footer .colour-stripe {
 .block--tfnsw-opendata-theme-tfnswckanloginblock .navbar-nav .nav-item .nav-link:hover {
     color:  #18bc9c;
   }
+
+/* align navbar-toggle to the left for top navbar*/
+  .ms-auto .navbar .container::before,
+  .ms-auto .navbar .container::after {
+    display: table !important;
+    content: none !important;
+  }
+ 
+  .ms-auto .navbar-toggler {
+    font-size: 1.25rem !important;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .ms-auto .navbar {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem !important;
+  }
+
+  .ms-auto .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      }
+
 /*-----------------------------[Registered Links]--------------------------------------*/
 /* Sets colour for Top Bar links and hover colour */
 .block--tfnsw-opendata-theme-search .navbar-nav .nav-item .nav-link.dropdown-toggle:hover {
@@ -1861,8 +1884,27 @@ footer .colour-stripe {
     text-transform: none;
     color:  #ffffff;
     font-size: 16px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  /* Configures the hamburger menu icon for the top bar */
+  .masthead .navbar-dark .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem !important;
+    line-height: 1 ;
+    color: rgba(0, 0, 0, 0.65);
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255, 0.1);
+    border-radius: .375rem;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+  /* Configures the hamburger menu icon for the top bar when focused, a white border around */
+  .masthead .navbar-dark .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem !important;
+    color: white;
   }
 /*-------------------------[About/Browse/Developers]------------------------------------*/
 /* Sets colour for Main Navigation links and hover colour */
@@ -1889,6 +1931,36 @@ footer .colour-stripe {
     font-size: 16px;
     text-transform: none;
 }
+/* added to fix the broken collapse function of main navbar */
+.collapse:not(.show) {
+  display: none !important;
+}
+
+/* Configures the main navigation hamburger menu icon */
+.masthead .navbar-light .navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem !important;
+  line-height: 1 ;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: .375rem;
+  transition: box-shadow 0.15s ease-in-out;
+ }
+
+ /* Configures the main navigation hamburger menu icon when focused, a black border around */
+ .masthead .navbar-light .navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem !important;
+ }
+
+/* Removes the container:after and :before padding for the main navigation */
+.navbar-light .container::before,
+.navbar-light .container::after {
+   display: table !important;
+   content: none !important;
+ }
 /*--------------------Enforce grey background for navbar and padding---------------------------------*/
 
 .navbar.navbar-expand-lg.justify-content-between.navbar-light{
