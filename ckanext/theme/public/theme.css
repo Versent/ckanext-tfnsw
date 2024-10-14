@@ -1887,7 +1887,7 @@ footer .colour-stripe {
     padding-top: 8px;
     padding-bottom: 8px;
   }
-
+  @media (max-width: 991px) {
   /* Configures the hamburger menu icon for the top bar */
   .masthead .navbar-dark .navbar-toggler {
     padding: 0.25rem 0.75rem;
@@ -1906,6 +1906,7 @@ footer .colour-stripe {
     box-shadow: 0 0 0 0.25rem !important;
     color: white;
   }
+}
 /*-------------------------[About/Browse/Developers]------------------------------------*/
 /* Sets colour for Main Navigation links and hover colour */
 .block--tfnsw-opendata-theme-main-menu .nav-item .nav-link{
@@ -1932,10 +1933,9 @@ footer .colour-stripe {
     text-transform: none;
 }
 /* added to fix the broken collapse function of main navbar */
-.collapse:not(.show) {
-  display: none !important;
-}
 
+
+@media (max-width: 991px) {
 /* Configures the main navigation hamburger menu icon */
 .masthead .navbar-light .navbar-toggler {
   padding: 0.25rem 0.75rem;
@@ -1961,6 +1961,12 @@ footer .colour-stripe {
    display: table !important;
    content: none !important;
  }
+
+ .collapse:not(.show) {
+  display: none !important;
+}
+}
+
 /*--------------------Enforce grey background for navbar and padding---------------------------------*/
 
 .navbar.navbar-expand-lg.justify-content-between.navbar-light{
