@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap);
 
 
 :root
@@ -90,18 +90,18 @@
 }
 
 header {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Public Sans', Arial, sans-serif;
 }
 
 body {
   font-size: 16px !important;
-  font-family: "Lato", Helvetica, Arial, sans-serif !important;
+  font-family: 'Public Sans', Arial, sans-serif !important;
   background-color: #fefefe !important;
   color: #6d6e71 !important;
 }
 
 footer {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Public Sans', Arial, sans-serif;
   margin-top: 60px;
 }
 
