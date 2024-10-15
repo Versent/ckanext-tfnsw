@@ -1986,11 +1986,12 @@ footer .colour-stripe {
 }
 /*-------------------Footer Style Changes---------------------------------------*/
 .page__footer h5 {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.25rem;
+  line-height: 1.2;
 }
 .page__footer .nav-item .nav-link {
-  color: #95a5a6;
+  color: #fff;
   padding-top: 6.4px;
   padding-bottom: 6.4px;  
   font-size: 1rem;
