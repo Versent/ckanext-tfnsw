@@ -7,6 +7,12 @@
   <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type) }}</li>
 {% endblock %}
 {% block page_title %}
+  <p>
+    To refine your browsing preferences, select:<br>
+    Data Catalogue to browse our entire collection of data files, insights, geospatial resources and maps, OR
+    Insights to only browse interactive visualisations and contextualised insights, OR
+    Geospatial to only browse geospatial resources including interactive and static maps.
+  </p>
   <h1 class="page-title">Datasets</h1>
 {% endblock %}
 {% block primary_content %}
