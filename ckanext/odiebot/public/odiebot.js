@@ -115,7 +115,10 @@ async function init_bot(initial_token) {
     },
     document.getElementById("containerEmp")
   );
+  /*
+  disabling this because it is causing the page to scroll to the bottom when coming in to focus
   document.querySelector("#containerEmp > *").focus();
+  */
 }
 
 function toggle_bot() {
