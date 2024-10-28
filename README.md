@@ -11,6 +11,9 @@ This CKAN extension provides following plugins
 - `tfnsw_subscriptions`
 - `tfnsw_theme`
 - `tfnsw_userreg`
+- `tfnsw_adjustableiframeview` (ckanext/adjustableiframeview/README.md)
+- `tfnsw_arcgisview` (ckanext/arcgisview/README.md)
+- `tfnsw_powerbiview` (ckanext/powerbiview/README.md)
 
 ## Requirements
 
