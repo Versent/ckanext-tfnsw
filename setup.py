@@ -34,7 +34,6 @@ setup(
     tfnsw_customauth=ckanext.customauth.plugin:CustomAuthPlugin
     tfnsw_discourse=ckanext.discourse.plugin:DiscoursePlugin
     tfnsw_openapiview=ckanext.openapiview.plugin:OpenApiViewPlugin
-    tfnsw_s3view=ckanext.s3view.plugin:S3ViewPlugin
     tfnsw_s3browse=ckanext.s3browse.plugin:S3BrowsePlugin
     tfnsw_subscriptions=ckanext.subscriptions.plugin:SubscriptionsPlugin
     tfnsw_metrics=ckanext.metrics.plugin:MetricsPlugin
