@@ -48,7 +48,7 @@ class S3BrowsePlugin(plugins.SingletonPlugin):
             "name": self.view_type,
             "title": "S3 File Browser",
             "icon": "file",
-            "default_title": toolkit._("File Browser"),
+            "default_title": toolkit._("S3 File Browser"),
         }
 
     def can_view(self, data_dict):
