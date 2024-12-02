@@ -78,3 +78,36 @@ class S3BrowsePlugin(plugins.SingletonPlugin):
             "prefix": prefix,
         }
         return {**data_dict, **data}
+
+    def after_resource_update(self, context, resource):
+        self.add_default_views(context, resource)
+
+    def after_resource_create(self, context, resource):
+        self.add_default_views(context, resource)
+
+    def has_view_already(self, context, resource):
+        if "id" in resource:
+            params = {"id": resource["id"]}
+            resource_views = toolkit.get_action("resource_view_list")(context, params)
+            for resource_view in resource_views:
+                if (
+                    "view_type" in resource_view
+                    and resource_view["view_type"] == self.view_type
+                ):
+                    return True
+
+        return False
+
+    def add_default_views(self, context, resource):
+        if (
+            "id" in resource
+            and self.can_view({"resource": resource})
+            and not self.has_view_already(context, resource)
+        ):
+            view = {
+                "title": "File Browser",
+                "description": "",
+                "resource_id": resource["id"],
+                "view_type": self.view_type,
+            }
+            toolkit.get_action("resource_view_create")(context, view)
